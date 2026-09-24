@@ -1,32 +1,32 @@
-<div class="toro-interactive-card">
+<div class="flex flex-col gap-8 rounded-3xl border-4 border-beige bg-parchment p-8 shadow-pop sm:flex-row">
     <!-- Left Column: Avatar & Dots -->
-    <div class="toro-display">
-        <div class="toro-avatar-large">
-            <img src="@CurrentMood.ImagePath" alt="Toru" class="@(isAnimating ? "squish" : "")" />
+    <div class="flex flex-col items-center gap-4">
+        <div class="h-[150px] w-[150px] overflow-hidden rounded-full border-[6px] border-white shadow-[4px_4px_0_rgba(74,56,48,0.1)]">
+            <img src="@CurrentMood.ImagePath" alt="Toru" class="h-full w-full object-cover transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] @(isAnimating ? "scale-90" : "")" />
         </div>
-        <div class="dots">
+        <div class="flex gap-2">
             @for (int i = 0; i < moods.Count; i++)
             {
-                <span class="dot @(i == currentMoodIndex ? "active" : "")"></span>
+                <span class="rounded-full transition-all duration-300 @(i == currentMoodIndex ? "h-3 w-3 bg-sage" : "h-2.5 w-2.5 bg-beige")"></span>
             }
         </div>
     </div>
 
     <!-- Right Column: Dialogue, Button, Code Preview -->
-    <div class="toro-controls">
-        <div class="dialogue-box @CurrentMood.ThemeClass">
-            <div class="speaker-name">
-                <span class="speaker-icon"><Icon Name="CurrentMood.Icon" Size="16" /></span>
-                <strong>Toru</strong> <span class="mode-label">[@CurrentMood.MoodName mode]</span>
+    <div class="flex grow flex-col items-start gap-4">
+        <div class="box-border w-full rounded-2xl border-[3px] p-[1.2rem] shadow-[4px_4px_0_rgba(0,0,0,0.05)] transition-colors duration-300 @CurrentMood.ThemeClass">
+            <div class="mb-2 flex items-center gap-1 text-[0.9rem]">
+                <span class="inline-flex"><Icon Name="CurrentMood.Icon" Size="16" /></span>
+                <strong>Toru</strong> <span class="text-xs text-bark">[@CurrentMood.MoodName mode]</span>
             </div>
-            <p class="dialogue-text">"@CurrentMood.Message"</p>
+            <p class="text-[0.95rem] text-bark">"@CurrentMood.Message"</p>
         </div>
 
-        <button class="btn btn-sage talk-btn" @onclick="CycleMood">▶ Talk to Toru</button>
+        <button class="btn btn-sage my-2 self-start" @onclick="CycleMood">▶ Talk to Toru</button>
 
-        <div class="code-preview">
-            <span class="code-label">&lt;/&gt; BLAZOR EQUIVALENT</span>
-            <pre><code>@CodePreviewText</code></pre>
+        <div class="box-border w-full rounded-2xl border-2 border-beige bg-night/5 p-5">
+            <span class="font-mono text-xs font-bold uppercase tracking-[1px] text-bark">&lt;/&gt; BLAZOR EQUIVALENT</span>
+            <pre class="mt-4 overflow-x-auto font-mono text-[0.85rem] leading-normal text-soil"><code>@CodePreviewText</code></pre>
         </div>
     </div>
 </div>
@@ -65,10 +65,23 @@
     private int currentMoodIndex = 0;
     private MoodState CurrentMood => moods[currentMoodIndex];
 
-    private async Task CycleMood()
-    {
-        currentMoodIndex = (currentMoodIndex + 1) % moods.Count;
-        StateHasChanged();
+    private async Task CycleMood() {
+        if (isAnimating) return;
+        isAnimating = true;
+        try
+        {
+            currentMoodIndex = (currentMoodIndex + 1) % moods.Count;
+            StateHasChanged();
+
+            // Deliberately NOT called from OnInitialized: browsers block audio
+            // playback that isn't triggered by a real user gesture.
+            await AudioService.PlayMoodTrackAsync(CurrentMood.AudioPath);
+            await Task.Delay(200);
+        }
+        finally
+        {
+            isAnimating = false;
+        }
     }
 }";
 }

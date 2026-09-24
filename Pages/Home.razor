@@ -1,31 +1,31 @@
 ﻿@page "/"
 
 <!-- Hero Section -->
-<section class="hero">
-    <div class="hero-character">
-        <div class="speech-bubble">
+<section class="mt-8 flex flex-col items-center gap-12 md:flex-row">
+    <div class="relative flex shrink-0 flex-col items-center">
+        <div class="relative mb-[15px] max-w-[200px] animate-float rounded-2xl border-[5px] border-sage/40 bg-mint px-5 py-6 text-center text-[0.9rem] font-bold text-night shadow-[4px_4px_0_rgba(0,0,0,0.05)] after:absolute after:-bottom-[23px] after:left-[20%] after:border-x-[12px] after:border-t-[25px] after:border-x-transparent after:border-t-white after:content-['']">
             <p>Welcome to my cozy corner of the internet!</p>
         </div>
-        <div class="avatar-container animate-bob">
-            <img src="images/mascot/profile.jpg" alt="Profile" />
+        <div class="h-[180px] w-[180px] animate-bob overflow-hidden rounded-full border-[6px] border-white shadow-[6px_6px_0_rgba(74,56,48,0.1)]">
+            <img src="images/mascot/profile.jpg" alt="Profile" class="h-full w-full object-cover" />
         </div>
-        <div class="sparkles"><Icon Name="IconName.Sparkle" Size="20" /> <Icon Name="IconName.Sparkle" Size="20" /> <Icon Name="IconName.Sparkle" Size="20" /></div>
+        <div class="mt-4 flex gap-2 text-sage"><Icon Name="IconName.Sparkle" Size="20" /> <Icon Name="IconName.Sparkle" Size="20" /> <Icon Name="IconName.Sparkle" Size="20" /></div>
     </div>
-    <div class="hero-text">
-        <span class="eyebrow">PERSONAL PORTFOLIO</span>
-        <h1>Hi, I'm <span class="text-sage">Andre!</span></h1>
-        <p>
+    <div>
+        <span class="text-xs font-extrabold uppercase tracking-[2px] text-bark">PERSONAL PORTFOLIO</span>
+        <h1 class="my-2 text-[3.5rem] leading-[1.2] font-extrabold">Hi, I'm <span class="text-sage">Andre!</span></h1>
+        <p class="mb-6 max-w-[450px] text-[1.05rem] leading-[1.6] text-bark">
             A Computer Science student passionate about building cozy, human-centered software with .NET & Blazor.
             When not coding, I'm tending my pixel garden or rewatching Doko Demo Issyo episodes.
         </p>
-        <div class="hero-actions">
+        <div>
             <a href="/projects" class="btn btn-sage">See my work ➔</a>
         </div>
     </div>
 </section>
 
 <!-- Interactive Demo Section -->
-<section class="portfolio-section">
+<section>
     <SectionHeader Eyebrow="💬 INTERACTIVE BLAZOR DEMO" EyebrowColor="var(--color-sage)" Title="Talk to Toru" />
     <ToruInteractive />
 </section>

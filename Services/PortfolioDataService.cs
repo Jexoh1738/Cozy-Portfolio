@@ -25,9 +25,9 @@ public class PortfolioDataService : IPortfolioDataService
 
     private readonly List<MoodState> _moodStates = new()
     {
-        new MoodState("Happy", "Welcome to my cozy corner of the internet! I'm so glad you stopped by~", "images/mascot/happy.jpg", "theme-pink", IconName.Sun, "audio/happy.mp3"),
-        new MoodState("Sleepy", "...oh! You came to visit? Excuse me, I was just resting...", "images/mascot/sleepy.jpg", "theme-blue", IconName.Sparkle, "audio/sleepy.mp3"),
-        new MoodState("Cool", "Hey. Cool of you to stop by. Check out what I've been building lately.", "images/mascot/cool.jpg", "theme-green", IconName.BotMessageSquare, "audio/cool.mp3")
+        new MoodState("Happy", "Welcome to my cozy corner of the internet! I'm so glad you stopped by~", "images/mascot/happy.jpg", "bg-blush border-coral/30", IconName.Sun, "audio/happy.mp3"),
+        new MoodState("Sleepy", "...oh! You came to visit? Excuse me, I was just resting...", "images/mascot/sleepy.jpg", "bg-powder border-sky/40", IconName.Sparkle, "audio/sleepy.mp3"),
+        new MoodState("Cool", "Hey. Cool of you to stop by. Check out what I've been building lately.", "images/mascot/cool.jpg", "bg-mint border-sage/40", IconName.BotMessageSquare, "audio/cool.mp3")
     };
 
     public IReadOnlyList<Project> GetProjects() => _projects;

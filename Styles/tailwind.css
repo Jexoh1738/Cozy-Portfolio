@@ -20,6 +20,12 @@
 
   --animate-bob: bob 3s ease-in-out infinite;
   @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  --animate-float: float 4s ease-in-out infinite;
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+    50% { transform: translateY(-5px) rotate(1.5deg); }
+    }
 }
 
 @layer base {
@@ -31,3 +37,4 @@
   .btn { @apply px-6 py-3 rounded-full font-display font-extrabold text-[0.95rem] cursor-pointer transition active:translate-y-0.5; }
   .btn-sage { @apply bg-sage text-white shadow-[4px_4px_0_rgba(127,169,116,0.4)]; }
 }
+
