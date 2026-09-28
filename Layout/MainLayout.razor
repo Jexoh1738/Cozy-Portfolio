@@ -11,6 +11,7 @@
             <a href="/" class="inline-flex items-center gap-[0.4rem] text-[0.9rem] font-bold text-bark transition-colors duration-200 hover:text-night"><Icon Name="IconName.Home" Size="20" /> Home</a>
             <a href="/skills" class="inline-flex items-center gap-[0.4rem] text-[0.9rem] font-bold text-bark transition-colors duration-200 hover:text-night"><Icon Name="IconName.Wrench" Size="20" /> Skills</a>
             <a href="/projects" class="inline-flex items-center gap-[0.4rem] text-[0.9rem] font-bold text-bark transition-colors duration-200 hover:text-night"><Icon Name="IconName.Layers" Size="20" /> Projects</a>
+            <a href="/music" class="inline-flex items-center gap-[0.4rem] text-[0.9rem] font-bold text-bark transition-colors duration-200 hover:text-night"><Icon Name="IconName.Music" Size="20" /> Music</a>
             <button class="cursor-pointer rounded-[50%] px-[0.4rem] py-[0.2rem] text-[1.1rem] transition-colors duration-200 hover:bg-black/5" @onclick="ToggleMute" title="@(AudioService.IsMuted ? "Unmute" : "Mute")">
                 <Icon Name="@(AudioService.IsMuted ? IconName.Mute : IconName.Speaker)" Size="20" />
             </button>
