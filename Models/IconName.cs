@@ -20,5 +20,11 @@ public enum IconName
     Speaker,
     Mute,
     Leaf,
-    Speech
+    Speech,
+    Star,
+    Disc,
+    Send,
+    Close,
+    ChevronLeft,
+    Music
 }
