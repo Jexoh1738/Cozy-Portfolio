@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="@Size" height="@Size" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="@CssClass">
+<svg xmlns="http://www.w3.org/2000/svg" width="@Size" height="@Size" viewBox="0 0 24 24" fill="@(Filled ? "currentColor" : "none")" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="@CssClass">
     @IconPaths
 </svg>
 
@@ -6,6 +6,7 @@
     [Parameter, EditorRequired] public IconName Name { get; set; }
     [Parameter] public int Size { get; set; } = 24;
     [Parameter] public string? CssClass { get; set; }
+    [Parameter] public bool Filled { get; set; }
 
     private MarkupString IconPaths => Name switch
     {
@@ -28,6 +29,12 @@
         IconName.Mute => Paths("<path d=\"M16 9a5 5 0 0 1 .95 2.293\"/><path d=\"M19.364 5.636a9 9 0 0 1 1.889 9.96\"/><path d=\"m2 2 20 20\"/><path d=\"m7 7-.587.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298V11\"/><path d=\"M9.828 4.172A.686.686 0 0 1 11 4.657v.686\"/>"),
         IconName.Leaf => Paths("<path d=\"M11 20a10 10 0 0010-10 25.9 25.9 0 00-1.04-7.281 1 1 0 00-1.755-.325C15.833 5.5 13 5.5 9.8 6.1A7 7 0 0011 20\"/><path d=\"M2 21a5 5 0 012.911-4.544C7.613 15.212 8.351 15.24 11 13\"/>"),
         IconName.Speech => Paths("<path d=\"M19.95 10.05a7 7 0 0 1 1.412 7.872 1 1 0 0 0-.058.787l.675 2.089a1 1 0 0 1-1.236 1.168l-2.155-.631a1 1 0 0 0-.745.06 7 7 0 0 1-7.793-1.445\"/><path d=\"M2.696 12.708a1 1 0 0 0-.058-.785 7 7 0 1 1 3.518 3.473 1 1 0 0 0-.744-.061l-2.155.63a1 1 0 0 1-1.236-1.167z\"/>"),
+        IconName.Star => Paths("<path d=\"M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z\"/>"),
+        IconName.Disc => Paths("<circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M6 12c0-1.7.7-3.2 1.8-4.2\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/><path d=\"M18 12c0 1.7-.7 3.2-1.8 4.2\"/>"),
+        IconName.Send => Paths("<path d=\"M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z\"/><path d=\"m21.854 2.147-10.94 10.939\"/>"),
+        IconName.Close => Paths("<path d=\"M18 6 6 18\"/><path d=\"m6 6 12 12\"/>"),
+        IconName.ChevronLeft => Paths("<path d=\"m15 18-6-6 6-6\"/>"),
+        IconName.Music => Paths("<circle cx=\"8\" cy=\"18\" r=\"4\"/><path d=\"M12 18V2l7 4\"/>"),
         _ => Paths("")
     };
 

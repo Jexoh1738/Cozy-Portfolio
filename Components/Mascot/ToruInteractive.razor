@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-8 rounded-3xl border-4 border-beige bg-parchment p-8 shadow-pop sm:flex-row">
     <!-- Left Column: Avatar & Dots -->
-    <div class="flex flex-col items-center gap-4">
+    <div class="flex shrink-0 flex-col items-center gap-4">
         <div class="h-[150px] w-[150px] overflow-hidden rounded-full border-[6px] border-white shadow-[4px_4px_0_rgba(74,56,48,0.1)]">
             <img src="@CurrentMood.ImagePath" alt="Toru" class="h-full w-full object-cover transition-transform duration-200 ease-[cubic-bezier(0.175,0.885,0.32,1.275)] @(isAnimating ? "scale-90" : "")" />
         </div>
@@ -13,7 +13,7 @@
     </div>
 
     <!-- Right Column: Dialogue, Button, Code Preview -->
-    <div class="flex grow flex-col items-start gap-4">
+    <div class="flex min-w-0 grow flex-col items-start gap-4">
         <div class="box-border w-full rounded-2xl border-[3px] p-[1.2rem] shadow-[4px_4px_0_rgba(0,0,0,0.05)] transition-colors duration-300 @CurrentMood.ThemeClass">
             <div class="mb-2 flex items-center gap-1 text-[0.9rem]">
                 <span class="inline-flex"><Icon Name="CurrentMood.Icon" Size="16" /></span>
@@ -49,39 +49,31 @@
     {
         if (isAnimating) return;
         isAnimating = true;
-        currentMoodIndex = (currentMoodIndex + 1) % moods.Count;
-        StateHasChanged();
-
-        // Deliberately NOT called from OnInitialized: browsers block audio
-        // playback that isn't triggered by a real user gesture. This click
-        // handler is a genuine user gesture, so starting/crossfading here is safe.
-        await AudioService.PlayMoodTrackAsync(CurrentMood.AudioPath);
-
-        await Task.Delay(200);
-        isAnimating = false;
-    }
-
-    private const string CodePreviewText = @"@code {
-    private int currentMoodIndex = 0;
-    private MoodState CurrentMood => moods[currentMoodIndex];
-
-    private async Task CycleMood() {
-        if (isAnimating) return;
-        isAnimating = true;
         try
         {
             currentMoodIndex = (currentMoodIndex + 1) % moods.Count;
             StateHasChanged();
 
             // Deliberately NOT called from OnInitialized: browsers block audio
-            // playback that isn't triggered by a real user gesture.
+            // playback that isn't triggered by a real user gesture. This click
+            // handler is a genuine user gesture, so starting/crossfading here is safe.
             await AudioService.PlayMoodTrackAsync(CurrentMood.AudioPath);
             await Task.Delay(200);
-        }
-        finally
+        } 
+        finally 
         {
             isAnimating = false;
         }
+    }
+
+    private const string CodePreviewText = @"@code {
+    private int currentMoodIndex = 0;
+    private MoodState CurrentMood => moods[currentMoodIndex];
+
+    private async Task CycleMood()
+    {
+        currentMoodIndex = (currentMoodIndex + 1) % moods.Count;
+        StateHasChanged();
     }
 }";
 }

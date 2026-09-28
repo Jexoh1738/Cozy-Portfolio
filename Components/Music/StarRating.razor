@@ -1,0 +1,38 @@
+<div class="flex gap-1" role="@(ReadOnly ? "img" : "radiogroup")" aria-label="Rating: @Value out of 5">
+    @for (var n = 1; n <= 5; n++)
+    {
+        var star = n;
+        <button type="button"
+                disabled="@ReadOnly"
+                aria-label="@star out of 5"
+                @onclick="() => Select(star)"
+                @onmouseenter="() => Hover(star)"
+                @onmouseleave="() => Hover(0)"
+                class="@(ReadOnly ? "cursor-default" : "cursor-pointer transition-transform duration-100 hover:scale-125 active:scale-95")">
+            <span class="@(star <= Display ? "text-coral" : "text-beige") transition-colors duration-100">
+                <Icon Name="IconName.Star" Size="Size" Filled="true" />
+            </span>
+        </button>
+    }
+</div>
+
+@code {
+    [Parameter] public int Value { get; set; }
+    [Parameter] public EventCallback<int> ValueChanged { get; set; }
+    [Parameter] public bool ReadOnly { get; set; }
+    [Parameter] public int Size { get; set; } = 22;
+
+    private int hovered;
+    private int Display => hovered > 0 ? hovered : Value;
+
+    private void Hover(int n)
+    {
+        if (!ReadOnly) hovered = n;
+    }
+
+    private async Task Select(int n)
+    {
+        if (ReadOnly) return;
+        await ValueChanged.InvokeAsync(n);
+    }
+}

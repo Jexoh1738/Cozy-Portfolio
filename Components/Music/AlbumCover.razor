@@ -1,0 +1,12 @@
+<div class="relative aspect-square w-full overflow-hidden rounded-2xl border-[1.5px] border-white/70 @Class"
+     style="background: @Album.Gradient; box-shadow: 0 4px 16px @Album.GlowColor, inset 0 1px 0 rgba(255,255,255,0.8);">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 rounded-2xl"
+         style="background: linear-gradient(180deg, rgba(255,255,255,0.62) 0%, @Album.GlossTint 30%, rgba(255,255,255,0.08) 50%, transparent 50%, rgba(255,255,255,0.04) 100%);"></div>
+    @ChildContent
+</div>
+
+@code {
+    [Parameter, EditorRequired] public Album Album { get; set; } = default!;
+    [Parameter] public string? Class { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+}

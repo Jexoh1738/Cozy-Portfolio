@@ -1,0 +1,21 @@
+<button type="button" @onclick="() => OnSelect.InvokeAsync()"
+        class="group flex flex-col gap-2.5 rounded-2xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-coral focus-visible:ring-offset-2">
+    <AlbumCover Album="Album" Class="transition-all duration-300 group-hover:-translate-y-2 group-hover:scale-[1.02]">
+        <div class="absolute inset-0 flex items-center justify-center text-white/35 transition-transform duration-700 motion-safe:group-hover:rotate-180">
+            <Icon Name="IconName.Disc" Size="44" />
+        </div>
+        <div class="absolute inset-0 flex items-end bg-linear-to-b from-transparent from-40% to-black/20 p-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            <span class="rounded-full border border-white/40 bg-white/20 px-2.5 py-1 text-[10px] font-bold text-white backdrop-blur-sm">View &amp; Review</span>
+        </div>
+    </AlbumCover>
+
+    <div class="px-0.5">
+        <p class="font-display text-sm leading-snug font-bold text-night">@Album.Title</p>
+        <p class="text-xs text-bark">@Album.Artist · @Album.Year</p>
+    </div>
+</button>
+
+@code {
+    [Parameter, EditorRequired] public Album Album { get; set; } = default!;
+    [Parameter] public EventCallback OnSelect { get; set; }
+}
