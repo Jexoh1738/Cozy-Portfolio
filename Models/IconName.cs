@@ -28,5 +28,6 @@ public enum IconName
     ChevronLeft,
     Music,
     Play,
-    Pause
+    Pause,
+    Energy
 }

@@ -27,7 +27,8 @@ public class PortfolioDataService : IPortfolioDataService
     {
         new MoodState("Happy", "Welcome to my cozy corner of the internet! I'm so glad you stopped by~", "images/mascot/happy.jpg", "bg-blush border-coral/30", IconName.Sun, "audio/moods/happy.mp3"),
         new MoodState("Sleepy", "...oh! You came to visit? Excuse me, I was just resting...", "images/mascot/sleepy.jpg", "bg-powder border-sky/40", IconName.Sparkle, "audio/moods/sleepy.mp3"),
-        new MoodState("Cool", "Hey. Cool of you to stop by. Check out what I've been building lately.", "images/mascot/cool.jpg", "bg-mint border-sage/40", IconName.BotMessageSquare, "audio/moods/cool.mp3")
+        new MoodState("Cool", "Hey. Cool of you to stop by. Check out what I've been building lately.", "images/mascot/cool.jpg", "bg-mint border-sage/40", IconName.BotMessageSquare, "audio/moods/cool.mp3"),
+        new MoodState("Hype", "Nothing beats a house music special. I feel like I can code all day!", "images/mascot/hype.jpg", "bg-[#ffd6a5] border-[#f59e0b]/50", IconName.Energy, "audio/moods/hype.mp3")
     };
 
     private readonly List<Album> _albums = new()
