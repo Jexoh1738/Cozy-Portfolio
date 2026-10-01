@@ -59,6 +59,8 @@ public class PortfolioDataService : IPortfolioDataService
             "images/albums/fallingforyou.png", "audio/snippets/fallingforyou.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)")
     };
 
+    private readonly List<Review> _reviews = new();
+
     public IReadOnlyList<Project> GetProjects() => _projects;
     public IReadOnlyList<Skill> GetSkills() => _skills;
     public IReadOnlyList<MoodState> GetMoodStates() => _moodStates;
