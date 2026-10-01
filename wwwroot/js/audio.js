@@ -4,6 +4,7 @@
 let audioEl = null;
 let currentSrc = null;
 let mutedState = false;
+let targetVolume = 0.2;
 let fadeHandle = null;
 
 function ensureAudioElement() {
@@ -56,7 +57,7 @@ export function crossfadeTo(src, durationMs) {
             let inStep = 0;
             fadeHandle = setInterval(() => {
                 inStep++;
-                el.volume = Math.min(1, inStep / steps);
+                el.volume = Math.min(targetVolume, targetVolume * inStep / steps);
                 if (inStep >= steps) clearFade();
             }, stepTime);
         }
@@ -66,6 +67,13 @@ export function crossfadeTo(src, durationMs) {
 export function setMuted(muted) {
     mutedState = muted;
     ensureAudioElement().muted = muted;
+}
+
+export function setVolume(volume) {
+    targetVolume = Math.min(0.5, Math.max(0, volume));
+    if (audioEl && !audioEl.paused) {
+        audioEl.volume = targetVolume;
+    }
 }
 
 export function dispose() {

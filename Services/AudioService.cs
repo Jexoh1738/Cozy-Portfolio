@@ -15,6 +15,7 @@ public class AudioService : IAudioService
     }
 
     public bool IsMuted { get; private set; }
+    public double Volume { get; private set; } = 0.2;
     public event Action? MuteStateChanged;
 
     private async Task<IJSObjectReference> GetModuleAsync()
@@ -35,6 +36,14 @@ public class AudioService : IAudioService
     {
         var module = await GetModuleAsync();
         await module.InvokeVoidAsync("crossfadeTo", audioPath, CrossfadeDurationMs);
+    }
+
+    public async Task SetVolumeAsync(double volume)
+    {
+        Volume = Math.Clamp(volume, 0, 0.5);
+        var module = await GetModuleAsync();
+        await module.InvokeVoidAsync("setVolume", Volume);
+        MuteStateChanged?.Invoke();
     }
 
     public async Task ToggleMuteAsync()

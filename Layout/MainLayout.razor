@@ -12,9 +12,18 @@
             <a href="/skills" class="inline-flex items-center gap-[0.4rem] text-[0.9rem] font-bold text-bark transition-colors duration-200 hover:text-night"><Icon Name="IconName.Wrench" Size="20" /> Skills</a>
             <a href="/projects" class="inline-flex items-center gap-[0.4rem] text-[0.9rem] font-bold text-bark transition-colors duration-200 hover:text-night"><Icon Name="IconName.Layers" Size="20" /> Projects</a>
             <a href="/music" class="inline-flex items-center gap-[0.4rem] text-[0.9rem] font-bold text-bark transition-colors duration-200 hover:text-night"><Icon Name="IconName.Music" Size="20" /> Music</a>
-            <button class="cursor-pointer rounded-[50%] px-[0.4rem] py-[0.2rem] text-[1.1rem] transition-colors duration-200 hover:bg-black/5" @onclick="ToggleMute" title="@(AudioService.IsMuted ? "Unmute" : "Mute")">
-                <Icon Name="@(AudioService.IsMuted ? IconName.Mute : IconName.Speaker)" Size="20" />
-            </button>
+            <div class="group relative">
+                <button class="cursor-pointer rounded-[50%] px-[0.4rem] py-[0.2rem] text-[1.1rem] transition-colors duration-200 hover:bg-black/5" @onclick="ToggleMute" title="@(AudioService.IsMuted ? "Unmute" : "Mute")" aria-label="@(AudioService.IsMuted ? "Unmute music" : "Mute music")">
+                    <Icon Name="@(AudioService.IsMuted ? IconName.Mute : IconName.Speaker)" Size="20" />
+                </button>
+                <div class="invisible absolute right-0 top-full z-10 pt-2 opacity-0 transition-opacity duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    <div class="flex w-48 items-center gap-2 rounded-lg border border-beige bg-white p-3 shadow-lg">
+                        <Icon Name="IconName.Speaker" Size="18" />
+                        <input class="w-full accent-sage" type="range" min="0" max="0.5" step="0.01" value="@AudioService.Volume" @oninput="SetVolume" aria-label="Music volume" />
+                        <span class="w-10 text-right text-xs font-bold">@AudioService.Volume.ToString("P0")</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -42,6 +51,14 @@
     private async Task ToggleMute()
     {
         await AudioService.ToggleMuteAsync();
+    }
+
+    private async Task SetVolume(ChangeEventArgs args)
+    {
+        if (double.TryParse(args.Value?.ToString(), out var volume))
+        {
+            await AudioService.SetVolumeAsync(volume);
+        }
     }
 
     public void Dispose()
