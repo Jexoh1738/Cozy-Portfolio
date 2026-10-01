@@ -32,22 +32,30 @@ public class PortfolioDataService : IPortfolioDataService
 
     private readonly List<Album> _albums = new()
     {
-        new Album("blue-rev", "Blue Rev", "Alvvays", 2022, "Dream Pop / Indie Rock",
-            "linear-gradient(145deg, #5ba8f5 0%, #90c8ff 45%, #c4e4ff 75%, #ddf0ff 100%)", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
-        new Album("antisocialites", "Antisocialites", "Alvvays", 2017, "Indie Pop",
-            "linear-gradient(145deg, #ff8c38 0%, #ffb347 45%, #ffd580 75%, #ffe8a8 100%)", "rgba(255,140,56,0.55)", "rgba(255,224,160,0.45)"),
-        new Album("get-up", "Get Up", "NewJeans", 2023, "K-Pop / Bedroom Pop",
-            "linear-gradient(145deg, #00c896 0%, #40e0b8 45%, #90f5d8 75%, #c0fff0 100%)", "rgba(0,200,150,0.55)", "rgba(160,255,224,0.45)"),
-        new Album("omg", "OMG", "NewJeans", 2023, "K-Pop / Dance Pop",
-            "linear-gradient(145deg, #a855f7 0%, #c87af0 45%, #e0a8ff 75%, #f0d0ff 100%)", "rgba(168,85,247,0.55)", "rgba(224,192,255,0.45)"),
-        new Album("heaven-or-las-vegas", "Heaven or Las Vegas", "Cocteau Twins", 1990, "Dream Pop / Shoegaze",
-            "linear-gradient(145deg, #00b4d8 0%, #00d4f0 45%, #60eeff 75%, #b0f8ff 100%)", "rgba(0,180,216,0.55)", "rgba(160,240,255,0.45)"),
-        new Album("treasure", "Treasure", "Cocteau Twins", 1984, "Dream Pop / Post-Punk",
-            "linear-gradient(145deg, #2d9e5f 0%, #3fc878 45%, #80e0a0 75%, #b8f0c8 100%)", "rgba(45,158,95,0.55)", "rgba(160,240,192,0.45)"),
-        new Album("reading-writing-arithmetic", "Reading, Writing and Arithmetic", "The Sundays", 1990, "Jangle Pop / Dream Pop",
-            "linear-gradient(145deg, #f472b6 0%, #f9a8d4 45%, #fbcfe8 75%, #fdf2f8 100%)", "rgba(244,114,182,0.55)", "rgba(252,207,232,0.45)"),
-        new Album("static-and-silence", "Static & Silence", "The Sundays", 1997, "Indie Pop",
-            "linear-gradient(145deg, #f5c542 0%, #f8d878 45%, #fbe6a0 75%, #fef3c7 100%)", "rgba(245,197,66,0.55)", "rgba(254,240,180,0.45)")
+        new Album("shut-up-and-drive", "Shut Up and Drive", "Deftones", 2007, "Alternative Metal",
+            "images/albums/shut-up-drive.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("weird-fishes", "Weird Fishes", "Radiohead", 2007, "Art Rock / Alternative",
+            "images/albums/weird-fishes.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("the-boy", "The Boy", "The Smashing Pumpkins", 1996, "Alternative Rock",
+            "images/albums/the-boy.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("through-the-dark", "Through the Dark", "The Sundays", 1997, "Jangle Pop / Indie Pop",
+            "images/albums/through-the-dark.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("she-smokes-in-bed", "She Smokes in Bed", "TV Girl", 2018, "Indie Pop",
+            "images/albums/she-smokes.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("frou-frou", "Frou-Frou Foxes in Midsummer Fires", "Cocteau Twins", 1990, "Dream Pop / Shoegaze",
+            "images/albums/frou-frou.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("champagne-coast", "Champagne Coast", "Blood Orange", 2011, "Alternative R&B",
+            "images/albums/champagne-coast.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("aoi-koi-daidaiiro", "青い、濃い、橙色の日", "MASS OF THE FERMENTING DREGS", 2010, "Post-Hardcore / Shoegaze",
+            "images/albums/aoi-koi.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("clarity", "Clarity", "Zedd", 2012, "EDM / Dance Pop",
+            "images/albums/clarity.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("touch", "Touch", "Cigarettes After Sex", 2019, "Dream Pop",
+            "images/albums/touch.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("isang-pag-ibig", "Isang Pag ibig", "IV Of Spades", 2018, "OPM / Funk Rock",
+            "images/albums/isang-pag-ibig.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("fallingforyou", "fallingforyou", "The 1975", 2013, "Indie Pop / Synth-Pop",
+            "images/albums/fallingforyou.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)")
     };
 
     private readonly List<Review> _reviews = new()

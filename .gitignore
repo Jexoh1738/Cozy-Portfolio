@@ -1,6 +1,30 @@
+# .NET build output
 bin/
 obj/
+
+# Visual Studio
 .vs/
 .vscode/
 *.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Node
 node_modules/
+
+# Generated Blazor assets
+wwwroot/_framework/
+
+# Test output
+TestResults/
+coverage/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db

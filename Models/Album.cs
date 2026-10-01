@@ -6,6 +6,6 @@ public record Album(
     string Artist,
     int Year,
     string Genre,
-    string Gradient,
+    string CoverImagePath,
     string GlowColor,
     string GlossTint);
