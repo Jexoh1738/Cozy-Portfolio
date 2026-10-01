@@ -53,7 +53,7 @@ public class PortfolioDataService : IPortfolioDataService
         new Album("touch", "Touch", "Cigarettes After Sex", 2019, "Dream Pop",
             "images/albums/touch.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("isang-pag-ibig", "Isang Pag ibig", "IV Of Spades", 2018, "OPM / Funk Rock",
-            "images/albums/isang-pag-ibig.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+            "images/albums/isang-pagibig.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("fallingforyou", "fallingforyou", "The 1975", 2013, "Indie Pop / Synth-Pop",
             "images/albums/fallingforyou.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)")
     };

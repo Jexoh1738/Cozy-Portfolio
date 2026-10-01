@@ -13,15 +13,7 @@
         <div class="relative flex flex-col gap-6 overflow-y-auto p-6 sm:p-8">
             <div class="flex flex-col items-start gap-6 sm:flex-row">
                 <div class="w-full shrink-0 sm:w-44">
-                    <AlbumCover Album="Album">
-                        <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4">
-                            <span class="text-white/30 drop-shadow"><Icon Name="IconName.Disc" Size="52" /></span>
-                            <div class="mt-1 text-center">
-                                <p class="font-display text-lg leading-tight font-extrabold text-white/85 drop-shadow">@Album.Title</p>
-                                <p class="text-sm font-semibold text-white/60">@Album.Artist</p>
-                            </div>
-                        </div>
-                    </AlbumCover>
+                    <AlbumCover Album="Album" />
                 </div>
 
                 <div class="flex min-w-0 flex-1 flex-col gap-3 pt-1">
