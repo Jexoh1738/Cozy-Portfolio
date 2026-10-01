@@ -6,6 +6,8 @@ let currentSrc = null;
 let mutedState = false;
 let targetVolume = 0.2;
 let fadeHandle = null;
+let previewAudio = null;
+let previewSrc = null;
 
 function ensureAudioElement() {
     if (!audioEl) {
@@ -74,6 +76,63 @@ export function setVolume(volume) {
     if (audioEl && !audioEl.paused) {
         audioEl.volume = targetVolume;
     }
+    if (previewAudio) {
+        previewAudio.volume = targetVolume;
+    }
+}
+
+function stopMood() {
+    clearFade();
+    if (audioEl) {
+        audioEl.pause();
+        audioEl.currentTime = 0;
+        audioEl.volume = 0;
+    }
+    currentSrc = null;
+}
+
+function ensurePreviewAudio() {
+    if (!previewAudio) {
+        previewAudio = document.createElement('audio');
+        previewAudio.preload = 'metadata';
+        previewAudio.volume = targetVolume;
+        document.body.appendChild(previewAudio);
+    }
+    return previewAudio;
+}
+
+export async function togglePreview(src) {
+    const el = ensurePreviewAudio();
+    if (previewSrc === src && !el.paused) {
+        el.pause();
+        return false;
+    }
+
+    if (previewSrc !== src) {
+        el.pause();
+        el.src = src;
+        el.currentTime = 0;
+        previewSrc = src;
+    } else if (el.ended) {
+        el.currentTime = 0;
+    }
+
+    stopMood();
+
+    try {
+        await el.play();
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+export function stopPreview() {
+    if (previewAudio) {
+        previewAudio.pause();
+        previewAudio.currentTime = 0;
+    }
+    previewSrc = null;
 }
 
 export function dispose() {
@@ -84,5 +143,12 @@ export function dispose() {
         audioEl.remove();
         audioEl = null;
     }
+    if (previewAudio) {
+        previewAudio.pause();
+        previewAudio.src = '';
+        previewAudio.remove();
+        previewAudio = null;
+    }
     currentSrc = null;
+    previewSrc = null;
 }

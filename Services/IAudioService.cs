@@ -9,5 +9,7 @@ public interface IAudioService : IAsyncDisposable
     Task InitializeAsync();
     Task PlayMoodTrackAsync(string audioPath);
     Task SetVolumeAsync(double volume);
+    Task<bool> TogglePreviewAsync(string audioPath);
+    Task StopPreviewAsync();
     Task ToggleMuteAsync();
 }

@@ -46,6 +46,18 @@ public class AudioService : IAudioService
         MuteStateChanged?.Invoke();
     }
 
+    public async Task<bool> TogglePreviewAsync(string audioPath)
+    {
+        var module = await GetModuleAsync();
+        return await module.InvokeAsync<bool>("togglePreview", audioPath);
+    }
+
+    public async Task StopPreviewAsync()
+    {
+        var module = await GetModuleAsync();
+        await module.InvokeVoidAsync("stopPreview");
+    }
+
     public async Task ToggleMuteAsync()
     {
         IsMuted = !IsMuted;

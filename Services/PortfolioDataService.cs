@@ -25,37 +25,37 @@ public class PortfolioDataService : IPortfolioDataService
 
     private readonly List<MoodState> _moodStates = new()
     {
-        new MoodState("Happy", "Welcome to my cozy corner of the internet! I'm so glad you stopped by~", "images/mascot/happy.jpg", "bg-blush border-coral/30", IconName.Sun, "audio/happy.mp3"),
-        new MoodState("Sleepy", "...oh! You came to visit? Excuse me, I was just resting...", "images/mascot/sleepy.jpg", "bg-powder border-sky/40", IconName.Sparkle, "audio/sleepy.mp3"),
-        new MoodState("Cool", "Hey. Cool of you to stop by. Check out what I've been building lately.", "images/mascot/cool.jpg", "bg-mint border-sage/40", IconName.BotMessageSquare, "audio/cool.mp3")
+        new MoodState("Happy", "Welcome to my cozy corner of the internet! I'm so glad you stopped by~", "images/mascot/happy.jpg", "bg-blush border-coral/30", IconName.Sun, "audio/moods/happy.mp3"),
+        new MoodState("Sleepy", "...oh! You came to visit? Excuse me, I was just resting...", "images/mascot/sleepy.jpg", "bg-powder border-sky/40", IconName.Sparkle, "audio/moods/sleepy.mp3"),
+        new MoodState("Cool", "Hey. Cool of you to stop by. Check out what I've been building lately.", "images/mascot/cool.jpg", "bg-mint border-sage/40", IconName.BotMessageSquare, "audio/moods/cool.mp3")
     };
 
     private readonly List<Album> _albums = new()
     {
-        new Album("shut-up-and-drive", "Shut Up and Drive", "Deftones", 2007, "Alternative Metal",
-            "images/albums/shut-up-drive.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
-        new Album("weird-fishes", "Weird Fishes", "Radiohead", 2007, "Art Rock / Alternative",
-            "images/albums/weird-fishes.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("shut-up-and-drive", "Be Quiet And Drive (Far Away)", "Deftones", 1997, "Alternative Metal",
+            "images/albums/shut-up-drive.png", "audio/snippets/shut-up-and-drive.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("weird-fishes", "All I Need", "Radiohead", 2007, "Art Rock / Alternative",
+            "images/albums/all-i-need.png", "audio/snippets/all-i-need.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("the-boy", "The Boy", "The Smashing Pumpkins", 1996, "Alternative Rock",
-            "images/albums/the-boy.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+            "images/albums/the-boy.jpg", "audio/snippets/the-boy.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("through-the-dark", "Through the Dark", "The Sundays", 1997, "Jangle Pop / Indie Pop",
-            "images/albums/through-the-dark.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
-        new Album("she-smokes-in-bed", "She Smokes in Bed", "TV Girl", 2018, "Indie Pop",
-            "images/albums/she-smokes.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+            "images/albums/through-the-dark.jpg", "audio/snippets/through-the-dark.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("she-smokes-in-bed", "She Smokes in Bed", "TV Girl", 2015, "Indie Pop",
+            "images/albums/she-smokes.jpg", "audio/snippets/she-smokes-in-bed.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("frou-frou", "Frou-Frou Foxes in Midsummer Fires", "Cocteau Twins", 1990, "Dream Pop / Shoegaze",
-            "images/albums/frou-frou.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+            "images/albums/frou-frou.png", "audio/snippets/frou-frou.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("champagne-coast", "Champagne Coast", "Blood Orange", 2011, "Alternative R&B",
-            "images/albums/champagne-coast.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
-        new Album("aoi-koi-daidaiiro", "青い、濃い、橙色の日", "MASS OF THE FERMENTING DREGS", 2010, "Post-Hardcore / Shoegaze",
-            "images/albums/aoi-koi.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+            "images/albums/champagne-coast.jpg", "audio/snippets/champagne-coast.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("aoi-koi-daidaiiro", "青い、濃い、橙色の日", "Mass of the Fermenting Dregs", 2009, "Post-Hardcore / Shoegaze",
+            "images/albums/aoi-koi.png", "audio/snippets/aoi-koi-daidaiiro.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("clarity", "Clarity", "Zedd", 2012, "EDM / Dance Pop",
-            "images/albums/clarity.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+            "images/albums/clarity.jpg", "audio/snippets/clarity.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("touch", "Touch", "Cigarettes After Sex", 2019, "Dream Pop",
-            "images/albums/touch.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
-        new Album("isang-pag-ibig", "Isang Pag ibig", "IV Of Spades", 2018, "OPM / Funk Rock",
-            "images/albums/isang-pagibig.jpg", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+            "images/albums/touch.jpg", "audio/snippets/touch.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
+        new Album("isang-pag-ibig", "Isang Pag ibig", "IV Of Spades", 2026, "OPM / Funk Rock",
+            "images/albums/isang-pagibig.jpg", "audio/snippets/isang-pag-ibig.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)"),
         new Album("fallingforyou", "fallingforyou", "The 1975", 2013, "Indie Pop / Synth-Pop",
-            "images/albums/fallingforyou.png", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)")
+            "images/albums/fallingforyou.png", "audio/snippets/fallingforyou.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)")
     };
 
     private readonly List<Review> _reviews = new()

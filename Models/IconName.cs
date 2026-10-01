@@ -26,5 +26,7 @@ public enum IconName
     Send,
     Close,
     ChevronLeft,
-    Music
+    Music,
+    Play,
+    Pause
 }

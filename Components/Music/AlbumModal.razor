@@ -1,11 +1,11 @@
 <div class="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-label="@Album.Title">
     <!-- Backdrop is a sibling of the panel, so clicks inside the panel never reach it -->
-    <div class="absolute inset-0 bg-[rgba(20,32,48,0.5)] backdrop-blur-lg backdrop-saturate-150" @onclick="() => OnClose.InvokeAsync()"></div>
+    <div class="absolute inset-0 bg-[rgba(20,32,48,0.5)] backdrop-blur-lg backdrop-saturate-150" @onclick="Close"></div>
 
     <div class="glass-panel relative flex max-h-[90dvh] w-full max-w-2xl flex-col overflow-hidden rounded-[2rem] motion-safe:animate-pop">
         <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-[2rem] bg-linear-to-b from-white/40 to-transparent"></div>
 
-        <button type="button" aria-label="Close" @onclick="() => OnClose.InvokeAsync()"
+        <button type="button" aria-label="Close" @onclick="Close"
                 class="absolute top-4 right-4 z-10 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-white/75 bg-white/55 text-bark shadow-[0_2px_8px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-sm transition-all duration-150 hover:scale-110 hover:bg-white/80">
             <Icon Name="IconName.Close" Size="14" />
         </button>
@@ -13,7 +13,13 @@
         <div class="relative flex flex-col gap-6 overflow-y-auto p-6 sm:p-8">
             <div class="flex flex-col items-start gap-6 sm:flex-row">
                 <div class="w-full shrink-0 sm:w-44">
-                    <AlbumCover Album="Album" />
+                    <AlbumCover Album="Album" OnClick="TogglePreview">
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/15">
+                            <span class="flex h-12 w-12 items-center justify-center rounded-full bg-white/80 text-bark shadow-lg" aria-hidden="true">
+                                <Icon Name="@(IsPreviewPlaying ? IconName.Pause : IconName.Play)" Size="24" CssClass="preview-icon" />
+                            </span>
+                        </div>
+                    </AlbumCover>
                 </div>
 
                 <div class="flex min-w-0 flex-1 flex-col gap-3 pt-1">
@@ -45,6 +51,8 @@
 </div>
 
 @code {
+    [Inject] private IAudioService AudioService { get; set; } = default!;
+
     [Parameter, EditorRequired] public Album Album { get; set; } = default!;
     [Parameter, EditorRequired] public IReadOnlyList<Review> Reviews { get; set; } = Array.Empty<Review>();
     [Parameter] public EventCallback OnClose { get; set; }
@@ -52,4 +60,17 @@
 
     private double Average => Reviews.Count == 0 ? 0 : Reviews.Average(r => r.Rating);
     private int AverageStars => (int)Math.Round(Average);
+    private bool IsPreviewPlaying { get; set; }
+
+    private async Task TogglePreview()
+    {
+        IsPreviewPlaying = await AudioService.TogglePreviewAsync(Album.SnippetAudioPath);
+    }
+
+    private async Task Close()
+    {
+        await AudioService.StopPreviewAsync();
+        IsPreviewPlaying = false;
+        await OnClose.InvokeAsync();
+    }
 }
