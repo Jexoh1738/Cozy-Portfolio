@@ -59,16 +59,6 @@ public class PortfolioDataService : IPortfolioDataService
             "images/albums/fallingforyou.png", "audio/snippets/fallingforyou.mp3", "rgba(90,168,245,0.55)", "rgba(200,232,255,0.45)")
     };
 
-    private readonly List<Review> _reviews = new()
-    {
-        new Review(Guid.NewGuid(), "blue-rev", "Mio", 5, "Feels like standing in a field of silvergrass in autumn. Belinda Says is on repeat.", new DateTime(2026, 9, 12)),
-        new Review(Guid.NewGuid(), "blue-rev", "Kev", 4, "Dreamy and dense. Pharmacist is such a perfect single.", new DateTime(2026, 8, 3)),
-        new Review(Guid.NewGuid(), "get-up", "Sora", 5, "Every track is a perfect confection. Super Shy alone is worth it.", new DateTime(2026, 7, 22)),
-        new Review(Guid.NewGuid(), "heaven-or-las-vegas", "Ren", 5, "Hauntingly beautiful. Cherry-Coloured Funk is ethereal.", new DateTime(2026, 6, 5)),
-        new Review(Guid.NewGuid(), "heaven-or-las-vegas", "Mio", 5, "Peak dream pop. The production still sounds otherworldly decades later.", new DateTime(2026, 5, 18)),
-        new Review(Guid.NewGuid(), "reading-writing-arithmetic", "Kev", 4, "Here's Where the Story Ends is a whole mood in three minutes.", new DateTime(2026, 4, 9))
-    };
-
     public IReadOnlyList<Project> GetProjects() => _projects;
     public IReadOnlyList<Skill> GetSkills() => _skills;
     public IReadOnlyList<MoodState> GetMoodStates() => _moodStates;
