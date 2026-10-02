@@ -29,5 +29,6 @@ public enum IconName
     Music,
     Play,
     Pause,
-    Energy
+    Energy,
+    Eye
 }
